@@ -13,8 +13,6 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -26,7 +24,8 @@ import androidx.appcompat.widget.Toolbar;
 public class MainActivity extends AppCompatActivity implements MainFragment.OnNumeroAleatorio{
 
     private AppBarConfiguration mAppBarConfiguration;
-    private final MainFragment mainFrag = new MainFragment();
+    private MainFragment mainFrag = null;
+    private BurnerAssembly burnerAssembly = null;
 
     @SuppressLint("ResourceAsColor")
     @Override
@@ -41,7 +40,11 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnNu
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MainActivityController.Companion.changeText(mainFrag);
+                if(mainFrag!=null){
+                    MainActivityController.Companion.changeText(mainFrag);
+                }else if(burnerAssembly!=null){
+                    MainActivityController.Companion.resetFragment(burnerAssembly);
+                }
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -64,9 +67,11 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnNu
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if(item.getItemId()==R.id.nav_test){
                     Toast.makeText(getApplicationContext(),"OK",Toast.LENGTH_SHORT).show();
-                    MainActivityController.Companion.addFragment(getSupportFragmentManager(), findViewById(R.id.contenedorFragment), mainFrag);
+                    MainActivityController.Companion.addFragment(getSupportFragmentManager(), findViewById(R.id.contenedorFragment), mainFrag = new MainFragment());
+                }else if(item.getItemId()==R.id.nav_gallery){
+                    MainActivityController.Companion.addFragment(getSupportFragmentManager(), findViewById(R.id.contenedorFragment), burnerAssembly = new BurnerAssembly());
+                }else if(item.getItemId()==R.id.nav_slideshow){
                 }
-
                 return false;
             }
         });
