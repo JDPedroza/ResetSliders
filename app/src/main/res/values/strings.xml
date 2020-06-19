@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">ResetSliders</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_test">Prueba</string>
+
+    <string name="home_second">Home Second</string>
+
+    <string name="titulo_main_activity">Main Activity</string>
+    <string name="titulo_main_fragment">Main Fragment</string>
+
+    <string name="min">0</string>
+    <string name="max">10</string>
+
+    <string name="limite_inferior">Min</string>
+    <string name="limite_superior">Max</string>
+    <string name="error_limites">Los límites introducidos no son correctos</string>
+
+    <string name="numero_aleatorio">Número aleatorio</string>
+    <string name="numero_aleatorio_actualizado">Nuevo número aleatorio: </string>
+</resources>
